@@ -3,16 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Full stack developer</title>
+  <title>Adira - Home</title>
+  <style>
+    /* Add your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    #postForm {
+      margin: 20px;
+    }
+
+    .post {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    #postList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .userProfile {
+      max-width: 100px;
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
-  <!-- Your resume content goes here -->
-  <div class="animated-section">
-    <h1> Aditya Datta Dangat </h1>
-    <!-- Add more sections as needed -->
+
+  <header>
+    <h1>Adira - Home</h1>
+  </header>
+
+  <div id="postForm">
+    <textarea id="postInput" placeholder="What's on your mind?"></textarea>
+    <br>
+    <button onclick="addPost()">Post</button>
   </div>
-  <script src="script.js"></script>
+
+  <ul id="postList"></ul>
+
+  <script>
+    function addPost() {
+      const postInput = document.getElementById('postInput');
+      const postText = postInput.value;
+
+      if (postText.trim() === '') {
+        alert('Please enter a post before submitting.');
+        return;
+      }
+
+      const postList = document.getElementById('postList');
+
+      const postItem = document.createElement('li');
+      postItem.className = 'post';
+
+      const userProfile = document.createElement('img');
+      userProfile.src = 'default-profile-picture.jpg'; // You can replace this with the user's profile picture
+      userProfile.alt = 'User Profile';
+      userProfile.className = 'userProfile';
+
+      const postContent = document.createElement('p');
+      postContent.innerText = postText;
+
+      postItem.appendChild(userProfile);
+      postItem.appendChild(postContent);
+
+      postList.appendChild(postItem);
+
+      // Clear the input field after posting
+      postInput.value = '';
+    }
+  </script>
+
 </body>
 </html>
-￼Enter
